@@ -39,6 +39,7 @@ jobs:
           git config --local user.name "kenchan0130"
           git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git add -N .
+          git add .
           if git diff --exit-code --quiet;then
             echo "No change."
           else
