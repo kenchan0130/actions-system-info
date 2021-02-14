@@ -9,7 +9,7 @@
     "clean": "rimraf dist/",
     "lint": "eslint --ext .ts,.js --max-warnings=0 src/**/*",
     "lint:fix": "eslint --ext .ts,.js --fix src/**/*",
-    "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -s",
+    "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -m -s",
     "test": "jest"
   },
   "repository": {
