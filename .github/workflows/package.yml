@@ -1,0 +1,46 @@
+name: Package
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  cache-version: v1
+  node-version: "12"
+
+jobs:
+  Package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "${{ env.node-version }}"
+      - name: Get npm cache directory path
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ env.cache-version }}-${{ runner.OS }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ env.cache-version }}-${{ runner.OS }}-npm-
+      - name: Install Node.js dependences
+        run: |
+          npm ci
+      - name: Run build
+        run: |
+          npm run build
+      - name: Run package
+        run: |
+          npm run package
+      - name: Push package
+        run: |
+          git config --local user.email "1155067+kenchan0130@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git add .
+          git commit -m "[skip-ci] Create package by ${GITHUB_SHA}"
+          git push origin master
