@@ -43,6 +43,6 @@ jobs:
             echo "No change."
           else
             git add .
-            git commit -m "[skip-ci] Create package by ${GITHUB_SHA}"
+            git commit -m "[skip ci] Create package by ${GITHUB_SHA}"
             git push origin master
           fi
