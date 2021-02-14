@@ -38,6 +38,10 @@ jobs:
           git config --local user.email "1155067+kenchan0130@users.noreply.github.com"
           git config --local user.name "kenchan0130"
           git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
-          git add .
-          git commit -m "[skip-ci] Create package by ${GITHUB_SHA}"
-          git push origin master
+          git add -N .
+          if git diff --exit-code --quiet;then
+            git commit -m "[skip-ci] Create package by ${GITHUB_SHA}"
+            git push origin master
+          else
+            echo "No change."
+          fi
