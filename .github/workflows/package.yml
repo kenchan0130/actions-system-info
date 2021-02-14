@@ -40,8 +40,8 @@ jobs:
           git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git add -N .
           if git diff --exit-code --quiet;then
+            echo "No change."
+          else
             git commit -m "[skip-ci] Create package by ${GITHUB_SHA}"
             git push origin master
-          else
-            echo "No change."
           fi
