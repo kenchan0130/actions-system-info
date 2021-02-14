@@ -1,0 +1,29 @@
+name: "Runner OS system information"
+description: "Get runner os system information"
+branding:
+  icon: 'server'
+  color: 'gray-dark'
+
+outputs:
+  arch:
+    description: "The operating system CPU architecture"
+  cpu-core:
+    description: "Logical CPU core size"
+  cpu-model:
+    description: "Logical CPU model name"
+  hostname:
+    description: "The host name of the operating system"
+  kernel-release:
+    description: "The kernel release"
+  name:
+    description: "The operating system (distribution) name"
+  platform:
+    description: "The operating system identity"
+  release:
+    description: "The operating system (distribution) release"
+  totalmem:
+    description: "the total amount of system memory in bytes"
+
+runs:
+  using: "node12"
+  main: "lib/index.js"
