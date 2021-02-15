@@ -9,15 +9,15 @@ This action provides GitHub Actions runner OS information.
 
 Name|Description
 ---|---
-arch|The operating system CPU architecture
-cpu-core|Logical CPU core size
-cpu-model|Logical CPU model name
-hostname|The host name of the operating system
-kernel-release|The kernel release
-name|The operating system (distribution) name
-platform|The operating system identity
-release|The operating system (distribution) release
-totalmem|the total amount of system memory in bytes
+`arch`|The operating system CPU architecture
+`cpu-core`|Logical CPU core size
+`cpu-model`|Logical CPU model name
+`hostname`|The host name of the operating system
+`kernel-release`|The kernel release
+`name`|The operating system (distribution) name
+`platform`|The operating system identity
+`release`|The operating system (distribution) release
+`totalmem`|the total amount of system memory in bytes
 
 ## Example usage
 
