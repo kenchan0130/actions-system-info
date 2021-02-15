@@ -2,7 +2,7 @@ const mockSetOutput = jest.fn();
 
 import { main } from "../src";
 import { Arch } from "./../src/systemInfo";
-import { nonEmptyStringExpect } from "./helper/helper";
+import { nonEmptyStringExpect } from "./helpers/helper";
 
 jest.mock("@actions/core", () => {
   return {

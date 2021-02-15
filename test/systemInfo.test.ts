@@ -1,5 +1,5 @@
 import { Arch, getSystemInfo } from "./../src/systemInfo";
-import { nonEmptyStringExpect, platformList } from "./helper/helper";
+import { nonEmptyStringExpect, platformList } from "./helpers/helper";
 
 describe("getSystemInfo", () => {
   it("should return system info", async () => {
