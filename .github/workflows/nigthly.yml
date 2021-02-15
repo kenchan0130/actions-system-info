@@ -1,0 +1,42 @@
+name: Nigthly
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+env:
+  cache-version: v1
+  node-version: "12"
+
+jobs:
+  nigthly:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: kenchan0130/actions-system-info@master
+        id: system-info
+      - name: Echo outputs
+        run: |
+          echo "Arch: ${{ steps.system-info.outputs.arch }}"
+          echo "CPU Core: ${{ steps.system-info.outputs.cpu-core }}"
+          echo "CPU Model: ${{ steps.system-info.outputs.cpu-model }}"
+          echo "Hostname: ${{ steps.system-info.outputs.hostname }}"
+          echo "Kernel release: ${{ steps.system-info.outputs.kernel-release }}"
+          echo "Name: ${{ steps.system-info.outputs.name }}"
+          echo "Platform: ${{ steps.system-info.outputs.platform }}"
+          echo "Release: ${{ steps.system-info.outputs.release }}"
+          echo "Total memory bytes: ${{ steps.system-info.outputs.totalmem }}"
+      - name: Check outputs
+        run: |
+          [ -n "${{ steps.system-info.outputs.arch }}" ] && \
+          [ -n "${{ steps.system-info.outputs.cpu-core }}" ] && \
+          [ -n "${{ steps.system-info.outputs.cpu-model }}" ] && \
+          [ -n "${{ steps.system-info.outputs.hostname }}" ] && \
+          [ -n "${{ steps.system-info.outputs.kernel-release }}" ] && \
+          [ -n "${{ steps.system-info.outputs.name }}" ] && \
+          [ -n "${{ steps.system-info.outputs.platform }}" ] && \
+          [ -n "${{ steps.system-info.outputs.release }}" ] && \
+          [ -n "${{ steps.system-info.outputs.totalmem }}" ] \
+          || exit 1
