@@ -1,7 +1,7 @@
 # GitHub Actions runner OS system information
 
-![Release](https://img.shields.io/github/v/release/kenchan0130/actions-system-info)
-![Nigthly](https://github.com/kenchan0130/actions-system-info/workflows/Nigthly/badge.svg)
+[![Release](https://img.shields.io/github/v/release/kenchan0130/actions-system-info)](https://github.com/kenchan0130/actions-system-info/releases)
+[![Nigthly](https://github.com/kenchan0130/actions-system-info/workflows/Nigthly/badge.svg)](https://github.com/kenchan0130/actions-system-info/actions?query=workflow%3ANigthly)
 
 This action provides GitHub Actions runner OS information.
 
