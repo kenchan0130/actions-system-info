@@ -1,16 +1,9 @@
-import { Arch, getSystemInfo } from "./../src/systemInfo";
+import { getSystemInfo } from "./../src/systemInfo";
 import { nonEmptyStringExpect, platformList } from "./helpers/helper";
 
 describe("getSystemInfo", () => {
   it("should return system info", async () => {
     await expect(getSystemInfo()).resolves.toMatchObject({
-      arch: expect.stringMatching(
-        new RegExp(
-          `^${Object.values(Arch)
-            .map((v) => `(${v})`)
-            .join("|")}$`
-        )
-      ),
       hostname: nonEmptyStringExpect,
       cpu: {
         core: expect.any(Number),

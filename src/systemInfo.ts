@@ -5,23 +5,7 @@ import windowsRelase from "windows-release";
 
 import { getosAsync } from "./getosAsync";
 
-export const Arch = {
-  arm: "arm",
-  arm64: "arm64",
-  ia32: "ia32",
-  mips: "mips",
-  mipsel: "mipsel",
-  ppc: "ppc",
-  ppc64: "ppc64",
-  s390: "s390",
-  s390x: "s390x",
-  x32: "x32",
-  x64: "x64",
-} as const;
-type Arch = typeof Arch[keyof typeof Arch];
-
 export type SystemInfo = {
-  arch: typeof Arch[keyof typeof Arch];
   hostname: string;
   cpu: {
     core: number;
@@ -55,7 +39,6 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
   })();
 
   return Promise.resolve({
-    arch: os.arch() as Arch,
     hostname: os.hostname(),
     cpu: {
       core: cpus.length,

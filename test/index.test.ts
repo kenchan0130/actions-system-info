@@ -1,7 +1,6 @@
 const mockSetOutput = jest.fn();
 
 import { main } from "../src";
-import { Arch } from "./../src/systemInfo";
 import { nonEmptyStringExpect } from "./helpers/helper";
 
 jest.mock("@actions/core", () => {
@@ -24,16 +23,6 @@ describe("main", () => {
   it("should set correct outputs", async () => {
     await main();
 
-    expect(mockSetOutput).toBeCalledWith(
-      "arch",
-      expect.stringMatching(
-        new RegExp(
-          `^${Object.values(Arch)
-            .map((v) => `(${v})`)
-            .join("|")}$`
-        )
-      )
-    );
     expect(mockSetOutput).toBeCalledWith("cpu-core", expect.any(Number));
     expect(mockSetOutput).toBeCalledWith("cpu-model", nonEmptyStringExpect);
     expect(mockSetOutput).toBeCalledWith("hostname", nonEmptyStringExpect);

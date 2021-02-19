@@ -9,7 +9,6 @@ export async function main(): Promise<void> {
 
   core.debug(`System Info: ${JSON.stringify(systemInfo, null, 2)}`);
 
-  core.setOutput("arch", systemInfo.arch);
   core.setOutput("cpu-core", systemInfo.cpu.core);
   core.setOutput("cpu-model", systemInfo.cpu.model);
   core.setOutput("hostname", systemInfo.hostname);
