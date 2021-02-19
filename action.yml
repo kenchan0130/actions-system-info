@@ -5,8 +5,6 @@ branding:
   color: 'gray-dark'
 
 outputs:
-  arch:
-    description: "The operating system CPU architecture"
   cpu-core:
     description: "Logical CPU core size"
   cpu-model:

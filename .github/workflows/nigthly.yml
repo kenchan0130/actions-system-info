@@ -20,7 +20,6 @@ jobs:
       - name: Check outputs
         run: |
           OUTPUTS=(
-            "Arch: ${{ steps.system-info.outputs.arch }}"
             "CPU Core: ${{ steps.system-info.outputs.cpu-core }}"
             "CPU Model: ${{ steps.system-info.outputs.cpu-model }}"
             "Hostname: ${{ steps.system-info.outputs.hostname }}"
@@ -52,7 +51,6 @@ jobs:
       - name: Check outputs
         run: |
           $OUTPUTS = @(
-            "Arch: ${{ steps.system-info.outputs.arch }}",
             "CPU Core: ${{ steps.system-info.outputs.cpu-core }}",
             "CPU Model: ${{ steps.system-info.outputs.cpu-model }}",
             "Hostname: ${{ steps.system-info.outputs.hostname }}",
