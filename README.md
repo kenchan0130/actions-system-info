@@ -18,6 +18,8 @@ Name|Description
 `release`|The operating system (distribution) release
 `totalmem`|the total amount of system memory in bytes
 
+If you want to see the specific output contents for each OS, you can check them at [here](https://github.com/kenchan0130/actions-system-info/actions/workflows/nigthly.yml).
+
 ## Example usage
 
 ```yaml
