@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: kenchan0130/actions-system-info@v1.0.0
         id: system-info
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "${{ env.node-version }}"
       - name: Get npm cache directory path
