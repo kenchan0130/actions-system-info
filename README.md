@@ -1,6 +1,6 @@
 # System Info GitHub Action
 
-This action provides GitHub Actions runner OS information.
+This action provides GitHub Actions runner OS information
 
 This repository was forked from https://github.com/ynab/system-info-action. Please consider [sponsoring](https://github.com/sponsors/kenchan0130) the original author.
 

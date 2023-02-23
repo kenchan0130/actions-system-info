@@ -1,5 +1,5 @@
 name: "System Info GitHub Action"
-description: "This action provides GitHub Actions runner OS information."
+description: "This action provides GitHub Actions runner OS information"
 branding:
   icon: 'server'
   color: 'blue'
