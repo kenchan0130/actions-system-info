@@ -1,8 +1,8 @@
-name: "GitHub Actions runner OS system information"
+name: "System Info GitHub Action"
 description: "This action provides GitHub Actions runner OS information."
 branding:
   icon: 'server'
-  color: 'gray-dark'
+  color: 'blue'
 
 outputs:
   cpu-core:

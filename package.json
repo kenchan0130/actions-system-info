@@ -1,8 +1,7 @@
 {
-  "name": "actions-system-info",
-  "private": true,
-  "version": "0.0.0",
-  "description": "A GitHub action to get information about runner os system",
+  "name": "system-info-action",  
+  "version": "1.0.0",
+  "description": "A GitHub Action to get information about runner OS system",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -14,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kenchan0130/actions-system-info.git"
+    "url": "git+ssh://git@github.com/ynab/system-info-action.git"
   },
   "keywords": [
     "github",
@@ -26,11 +25,8 @@
     "linux"
   ],
   "author": "Tadayuki Onishi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kenchan0130/actions-system-info/issues"
-  },
-  "homepage": "https://github.com/kenchan0130/actions-system-info#readme",
+  "license": "MIT",  
+  "homepage": "https://github.com/ynab/system-info-action",
   "devDependencies": {
     "@types/getos": "latest",
     "@types/jest": "latest",
