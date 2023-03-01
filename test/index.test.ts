@@ -1,9 +1,11 @@
-const mockSetOutput = jest.fn();
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const mockSetOutput = vi.fn();
 
 import { main } from "../src";
 import { nonEmptyStringExpect } from "./helpers/helper";
 
-jest.mock("@actions/core", () => {
+vi.mock("@actions/core", () => {
   return {
     setOutput: mockSetOutput,
     debug: (message: string) => {
@@ -17,7 +19,7 @@ jest.mock("@actions/core", () => {
 
 describe("main", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it("should set correct outputs", async () => {

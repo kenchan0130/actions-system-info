@@ -9,14 +9,13 @@ module.exports = {
   ],
   plugins: [
     "@typescript-eslint",
-    "jest",
+    "vitest",
     "simple-import-sort",
     "prettier"
   ],
   env: {
     node: true,
     es6: true,
-    "jest/globals": true,
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
