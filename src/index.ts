@@ -14,6 +14,7 @@ export async function main(): Promise<void> {
   core.setOutput("hostname", systemInfo.hostname);
   core.setOutput("platform", systemInfo.platform);
   core.setOutput("kernel-release", systemInfo.kernel.release);
+  core.setOutput("kernel-version", systemInfo.kernel.version);
   core.setOutput("name", systemInfo.name);
   core.setOutput("release", systemInfo.release);
   core.setOutput("totalmem", systemInfo.totalmem);

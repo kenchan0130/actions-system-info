@@ -32,6 +32,10 @@ describe("main", () => {
       "kernel-release",
       nonEmptyStringExpect
     );
+    expect(mockSetOutput).toBeCalledWith(
+      "kernel-version",
+      nonEmptyStringExpect
+    );
     expect(mockSetOutput).toBeCalledWith("name", nonEmptyStringExpect);
     expect(mockSetOutput).toBeCalledWith("release", nonEmptyStringExpect);
     expect(mockSetOutput).toBeCalledWith("totalmem", expect.any(Number));

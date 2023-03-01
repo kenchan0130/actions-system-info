@@ -13,6 +13,7 @@ describe("getSystemInfo", () => {
       },
       kernel: {
         release: nonEmptyStringExpect,
+        version: nonEmptyStringExpect,
       },
       platform: expect.stringMatching(
         new RegExp(`^${platformList.map((v) => `(${v})`).join("|")}$`)
