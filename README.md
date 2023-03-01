@@ -13,6 +13,7 @@ Name|Description
 `cpu-model`|Logical CPU model name
 `hostname`|The host name of the operating system
 `kernel-release`|The kernel release
+`kernel-version`|The kernel version
 `name`|The operating system (distribution) name
 `platform`|The operating system identity
 `release`|The operating system (distribution) release

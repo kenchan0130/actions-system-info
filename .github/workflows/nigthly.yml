@@ -20,6 +20,7 @@ jobs:
             "CPU Model: ${{ steps.system-info.outputs.cpu-model }}"
             "Hostname: ${{ steps.system-info.outputs.hostname }}"
             "Kernel release: ${{ steps.system-info.outputs.kernel-release }}"
+            "Kernel version: ${{ steps.system-info.outputs.kernel-version }}"
             "Name: ${{ steps.system-info.outputs.name }}"
             "Platform: ${{ steps.system-info.outputs.platform }}"
             "Release: ${{ steps.system-info.outputs.release }}"
@@ -51,6 +52,7 @@ jobs:
             "CPU Model: ${{ steps.system-info.outputs.cpu-model }}",
             "Hostname: ${{ steps.system-info.outputs.hostname }}",
             "Kernel release: ${{ steps.system-info.outputs.kernel-release }}",
+            "Kernel version: ${{ steps.system-info.outputs.kernel-version }}",
             "Name: ${{ steps.system-info.outputs.name }}",
             "Platform: ${{ steps.system-info.outputs.platform }}",
             "Release: ${{ steps.system-info.outputs.release }}",

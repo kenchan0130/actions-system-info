@@ -14,8 +14,7 @@ export type SystemInfo = {
   totalmem: number; // Bytes
   kernel: {
     release: string;
-    // os.version() is not supported node12 of GitHub Actions yet
-    // version: string;
+    version: string;
   };
   name: string;
   platform: string;
@@ -46,6 +45,7 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
     },
     kernel: {
       release: os.release(),
+      version: os.version(),
     },
     totalmem: os.totalmem(),
     platform: os.platform(),

@@ -42,3 +42,9 @@ jobs:
           npm run package
       - name: Run action
         uses: ./
+        id: system-info
+      - name: Show action outputs
+        run: |
+          npm run showenv:SYSTEM_INFO_OUTPUTS
+        env:
+          SYSTEM_INFO_OUTPUTS: ${{join(steps.system-info.outputs.*, ', ')}}
