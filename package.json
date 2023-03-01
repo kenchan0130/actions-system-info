@@ -10,7 +10,8 @@
     "lint": "eslint --ext .ts,.js --max-warnings=0 src/**/*",
     "lint:fix": "eslint --ext .ts,.js --fix src/**/*",
     "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -m -s",
-    "test": "vitest"
+    "test": "vitest",
+    "showenv:SYSTEM_INFO_OUTPUTS": "node -e 'console.log(process.env.SYSTEM_INFO_OUTPUTS);'"
   },
   "repository": {
     "type": "git",
