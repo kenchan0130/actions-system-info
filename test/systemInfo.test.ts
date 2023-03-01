@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 import { getSystemInfo } from "./../src/systemInfo";
 import { nonEmptyStringExpect, platformList } from "./helpers/helper";
 
