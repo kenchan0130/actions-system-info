@@ -32,26 +32,26 @@
   },
   "homepage": "https://github.com/kenchan0130/actions-system-info#readme",
   "devDependencies": {
-    "@types/getos": "latest",
-    "@types/node": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
-    "@vercel/ncc": "latest",
-    "eslint": "latest",
-    "eslint-config-prettier": "latest",
-    "eslint-plugin-prettier": "latest",
-    "eslint-plugin-simple-import-sort": "latest",
-    "eslint-plugin-vitest": "latest",
-    "prettier": "latest",
-    "rimraf": "latest",
-    "typescript": "latest",
-    "vitest": "latest"
+    "@types/getos": "*",
+    "@types/node": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "@vercel/ncc": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-simple-import-sort": "*",
+    "eslint-plugin-vitest": "*",
+    "prettier": "*",
+    "rimraf": "*",
+    "typescript": "*",
+    "vitest": "*"
   },
   "dependencies": {
-    "@actions/core": "latest",
-    "getos": "latest",
-    "macos-release": "latest",
-    "win-version": "latest",
-    "windows-release": "latest"
+    "@actions/core": "*",
+    "getos": "*",
+    "macos-release": "*",
+    "win-version": "*",
+    "windows-release": "*"
   }
 }
