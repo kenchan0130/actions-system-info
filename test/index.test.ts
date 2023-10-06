@@ -1,18 +1,17 @@
+import * as core from "@actions/core";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-const mockSetOutput = vi.fn();
 
 import { main } from "../src";
 import { nonEmptyStringExpect } from "./helpers/helper";
 
 vi.mock("@actions/core", () => {
   return {
-    setOutput: mockSetOutput,
-    debug: (message: string) => {
-      console.log(message);
+    setOutput: vi.fn(),
+    debug: (_: string) => {
+      return;
     },
-    setFailed: (message: string) => {
-      console.error(message);
+    setFailed: (_: string) => {
+      return;
     },
   };
 });
@@ -25,19 +24,19 @@ describe("main", () => {
   it("should set correct outputs", async () => {
     await main();
 
-    expect(mockSetOutput).toBeCalledWith("cpu-core", expect.any(Number));
-    expect(mockSetOutput).toBeCalledWith("cpu-model", nonEmptyStringExpect);
-    expect(mockSetOutput).toBeCalledWith("hostname", nonEmptyStringExpect);
-    expect(mockSetOutput).toBeCalledWith(
+    expect(core.setOutput).toBeCalledWith("cpu-core", expect.any(Number));
+    expect(core.setOutput).toBeCalledWith("cpu-model", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("hostname", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith(
       "kernel-release",
       nonEmptyStringExpect
     );
-    expect(mockSetOutput).toBeCalledWith(
+    expect(core.setOutput).toBeCalledWith(
       "kernel-version",
       nonEmptyStringExpect
     );
-    expect(mockSetOutput).toBeCalledWith("name", nonEmptyStringExpect);
-    expect(mockSetOutput).toBeCalledWith("release", nonEmptyStringExpect);
-    expect(mockSetOutput).toBeCalledWith("totalmem", expect.any(Number));
+    expect(core.setOutput).toBeCalledWith("name", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("release", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("totalmem", expect.any(Number));
   });
 });
