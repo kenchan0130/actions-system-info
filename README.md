@@ -25,10 +25,10 @@ If you want to see the specific output contents for each OS, you can check them 
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v4
   - uses: kenchan0130/actions-system-info@master
     id: system-info
-  - uses: actions/cache@v2
+  - uses: actions/cache@v4
     with:
       path: ~/.npm
       key: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-node-${{ hashFiles('**/package-lock.json') }}
