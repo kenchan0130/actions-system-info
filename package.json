@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist/",
-    "lint": "eslint --ext .ts,.js --max-warnings=0 src/**/*",
-    "lint:fix": "eslint --ext .ts,.js --fix src/**/*",
+    "lint": "biome ci src",
+    "lint:fix": "biome check --apply src",
     "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -m -s",
     "test": "vitest",
     "showenv:SYSTEM_INFO_OUTPUTS": "node -e 'console.log(process.env.SYSTEM_INFO_OUTPUTS);'"
@@ -33,17 +33,10 @@
   },
   "homepage": "https://github.com/kenchan0130/actions-system-info#readme",
   "devDependencies": {
+    "@biomejs/biome": "1.6.4",
     "@types/getos": "*",
     "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
     "@vercel/ncc": "*",
-    "eslint": "*",
-    "eslint-config-prettier": "*",
-    "eslint-plugin-prettier": "*",
-    "eslint-plugin-simple-import-sort": "*",
-    "eslint-plugin-vitest": "*",
-    "prettier": "*",
     "rimraf": "*",
     "typescript": "*",
     "vitest": "*"

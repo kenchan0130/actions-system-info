@@ -1,5 +1,5 @@
+import os from "node:os";
 import macosRelease from "macos-release";
-import os from "os";
 import getWinVersion from "win-version";
 import windowsRelase from "windows-release";
 
@@ -27,14 +27,18 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
   const [name, release] = (() => {
     if (getosResult.os === "linux") {
       return [getosResult.dist, getosResult.release];
-    } else if (getosResult.os === "darwin") {
+    }
+
+    if (getosResult.os === "darwin") {
       const macos = macosRelease();
       return [macos.name, macos.version];
-    } else if (getosResult.os === "win32") {
-      return [windowsRelase(), `${getWinVersion().version}`];
-    } else {
-      throw new Error(`${getosResult.os} is not supported.`);
     }
+
+    if (getosResult.os === "win32") {
+      return [windowsRelase(), `${getWinVersion().version}`];
+    }
+
+    throw new Error(`${getosResult.os} is not supported.`);
   })();
 
   return Promise.resolve({
