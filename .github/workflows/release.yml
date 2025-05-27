@@ -5,30 +5,13 @@ on:
       - master
 
 jobs:
-  tagpr:
-    runs-on: ubuntu-latest
-    outputs:
-      tagpr-tag: ${{ steps.tagpr.outputs.tag }}
-    timeout-minutes: 5
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-    steps:
-      - uses: actions/checkout@v4.2.2
-        with:
-          persist-credentials: true # tagpr require this credential
-      - id: tagpr
-        uses: Songmu/tagpr@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   package:
-    needs: tagpr
-    if: needs.tagpr.outputs.tagpr-tag != ''
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
       contents: write
+    outputs:
+      ref: ${{ steps.package.outputs.ref }}
     steps:
       - uses: actions/checkout@v4
       - id: node-version
@@ -46,6 +29,7 @@ jobs:
         run: |
           npm run package
       - name: Push package
+        id: package
         run: |
           git config --local user.email "1155067+kenchan0130@users.noreply.github.com"
           git config --local user.name "kenchan0130"
@@ -57,4 +41,22 @@ jobs:
             git add .
             git commit -m "[skip ci] Create package by ${GITHUB_SHA}"
             git push origin master
+            echo "ref=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
           fi
+  tagpr:
+    needs: package
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.package.outputs.ref || 'master' }}
+          persist-credentials: true # tagpr require this credential
+      - id: tagpr
+        uses: Songmu/tagpr@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
