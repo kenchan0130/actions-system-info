@@ -3,4 +3,4 @@
   releaseBranch = master
   versionFile = package.json
   changelog = false
-  release = false
+  release = true
