@@ -42,7 +42,7 @@ jobs:
             git commit -m "[skip ci] Create package by ${GITHUB_SHA}"
             git push origin master
           fi
-          echo "ref=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          echo "ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
   tagpr:
     needs: package
     runs-on: ubuntu-latest
