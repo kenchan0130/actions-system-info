@@ -69,6 +69,4 @@ jobs:
         id: system-info
       - name: Show action outputs
         run: |
-          npm run showenv:SYSTEM_INFO_OUTPUTS
-        env:
-          SYSTEM_INFO_OUTPUTS: ${{ toJSON(steps.system-info.outputs) }}
+          echo '${{ toJSON(steps.system-info.outputs) }}'
