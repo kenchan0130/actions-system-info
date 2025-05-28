@@ -1,17 +1,37 @@
 name: CI
 on: [pull_request]
 
-env:
-  node-version: 20
-
 jobs:
-  lint:
+  node-version:
+    timeout-minutes: 5
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.node-version.outputs.result }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      # This is a container action, so only linux can be used
+      - id: node-version
+        uses: mikefarah/yq@v4
+        with:
+          cmd: yq '.runs.using | sub("^node", "")' action.yml
+
+  lint:
+    needs: node-version
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: "${{ env.node-version }}"
+          node-version: ${{ needs.node-version.outputs.result }}
           cache: npm
       - name: Install Node.js dependencies
         run: |
@@ -21,15 +41,19 @@ jobs:
           npm run lint
 
   test:
+    needs: node-version
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: "${{ env.node-version }}"
+          node-version: ${{ needs.node-version.outputs.result }}
           cache: npm
       - name: Install Node.js dependencies
         run: |
@@ -45,6 +69,4 @@ jobs:
         id: system-info
       - name: Show action outputs
         run: |
-          npm run showenv:SYSTEM_INFO_OUTPUTS
-        env:
-          SYSTEM_INFO_OUTPUTS: ${{join(steps.system-info.outputs.*, ', ')}}
+          echo '${{ toJSON(steps.system-info.outputs) }}'

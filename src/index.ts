@@ -9,15 +9,20 @@ export async function main(): Promise<void> {
 
   core.debug(`System Info: ${JSON.stringify(systemInfo, null, 2)}`);
 
-  core.setOutput("cpu-core", systemInfo.cpu.core);
-  core.setOutput("cpu-model", systemInfo.cpu.model);
-  core.setOutput("hostname", systemInfo.hostname);
-  core.setOutput("platform", systemInfo.platform);
-  core.setOutput("kernel-release", systemInfo.kernel.release);
-  core.setOutput("kernel-version", systemInfo.kernel.version);
-  core.setOutput("name", systemInfo.name);
-  core.setOutput("release", systemInfo.release);
-  core.setOutput("totalmem", systemInfo.totalmem);
+  const outputs = {
+    "cpu-core": systemInfo.cpu.core,
+    "cpu-model": systemInfo.cpu.model,
+    hostname: systemInfo.hostname,
+    platform: systemInfo.platform,
+    "kernel-release": systemInfo.kernel.release,
+    "kernel-version": systemInfo.kernel.version,
+    name: systemInfo.name,
+    release: systemInfo.release,
+    totalmem: systemInfo.totalmem,
+  };
+  for (const [key, value] of Object.entries(outputs)) {
+    core.setOutput(key, typeof value === "string" ? value.trim() : value);
+  }
 }
 
 main().catch((e: Error) => core.setFailed(e.message));

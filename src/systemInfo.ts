@@ -5,21 +5,21 @@ import windowsRelase from "windows-release";
 
 import { getosAsync } from "./getosAsync";
 
-export type SystemInfo = {
-  hostname: string;
-  cpu: {
+export type SystemInfo = Readonly<{
+  cpu: Readonly<{
     core: number;
     model: string;
-  };
-  totalmem: number; // Bytes
-  kernel: {
+  }>;
+  hostname: string;
+  kernel: Readonly<{
     release: string;
     version: string;
-  };
+  }>;
   name: string;
   platform: string;
   release: string;
-};
+  totalmem: number; // Bytes
+}>;
 
 export const getSystemInfo = async (): Promise<SystemInfo> => {
   const cpus = os.cpus();
@@ -42,18 +42,18 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
   })();
 
   return Promise.resolve({
-    hostname: os.hostname(),
     cpu: {
       core: cpus.length,
       model: cpus[0].model,
     },
+    hostname: os.hostname(),
     kernel: {
       release: os.release(),
       version: os.version(),
     },
-    totalmem: os.totalmem(),
-    platform: os.platform(),
     name,
+    platform: os.platform(),
     release,
+    totalmem: os.totalmem(),
   });
 };
