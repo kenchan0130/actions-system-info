@@ -11,7 +11,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: kenchan0130/actions-system-info@master
+      - uses: ./
         id: system-info
       - name: Check outputs
         run: |
@@ -21,9 +21,13 @@ jobs:
             "Hostname: ${{ steps.system-info.outputs.hostname }}"
             "Kernel release: ${{ steps.system-info.outputs.kernel-release }}"
             "Kernel version: ${{ steps.system-info.outputs.kernel-version }}"
+            "Manufacturer: ${{ steps.system-info.outputs.manufacturer }}"
+            "Model: ${{ steps.system-info.outputs.model }}"
             "Name: ${{ steps.system-info.outputs.name }}"
             "Platform: ${{ steps.system-info.outputs.platform }}"
             "Release: ${{ steps.system-info.outputs.release }}"
+            "Serial: ${{ steps.system-info.outputs.serial }}"
+            "Stock Keeping Unit: ${{ steps.system-info.outputs.sku }}"
             "Total memory bytes: ${{ steps.system-info.outputs.totalmem }}"
           )
 
@@ -53,9 +57,13 @@ jobs:
             "Hostname: ${{ steps.system-info.outputs.hostname }}",
             "Kernel release: ${{ steps.system-info.outputs.kernel-release }}",
             "Kernel version: ${{ steps.system-info.outputs.kernel-version }}",
+            "Manufacturer: ${{ steps.system-info.outputs.manufacturer }}"
+            "Model: ${{ steps.system-info.outputs.model }}"
             "Name: ${{ steps.system-info.outputs.name }}",
             "Platform: ${{ steps.system-info.outputs.platform }}",
             "Release: ${{ steps.system-info.outputs.release }}",
+            "Serial: ${{ steps.system-info.outputs.serial }}"
+            "Stock Keeping Unit: ${{ steps.system-info.outputs.sku }}"
             "Total memory bytes: ${{ steps.system-info.outputs.totalmem }}"
           )
 

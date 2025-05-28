@@ -35,8 +35,12 @@ describe("main", () => {
       "kernel-version",
       nonEmptyStringExpect
     );
+    expect(core.setOutput).toBeCalledWith("manufacturer", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("model", nonEmptyStringExpect);
     expect(core.setOutput).toBeCalledWith("name", nonEmptyStringExpect);
     expect(core.setOutput).toBeCalledWith("release", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("serial", nonEmptyStringExpect);
+    expect(core.setOutput).toBeCalledWith("sku", nonEmptyStringExpect);
     expect(core.setOutput).toBeCalledWith("totalmem", expect.any(Number));
   });
 });

@@ -2,6 +2,7 @@ import os from "node:os";
 import macosRelease from "macos-release";
 import getWinVersion from "win-version";
 import windowsRelase from "windows-release";
+import * as si from 'systeminformation';
 
 import { getosAsync } from "./getosAsync";
 
@@ -19,6 +20,10 @@ export type SystemInfo = {
   name: string;
   platform: string;
   release: string;
+  manufacturer: string;
+  model: string;
+  serial: string;
+  sku: string;
 };
 
 export const getSystemInfo = async (): Promise<SystemInfo> => {
@@ -41,6 +46,8 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
     throw new Error(`${getosResult.os} is not supported.`);
   })();
 
+  const system = await si.system();
+
   return Promise.resolve({
     hostname: os.hostname(),
     cpu: {
@@ -55,5 +62,9 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
     platform: os.platform(),
     name,
     release,
+    manufacturer: system.manufacturer,
+    model: system.model,
+    serial: system.serial,
+    sku: system.sku,
   });
 };

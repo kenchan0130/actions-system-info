@@ -21,6 +21,10 @@ describe("getSystemInfo", () => {
       totalmem: expect.any(Number),
       name: nonEmptyStringExpect,
       release: nonEmptyStringExpect,
+      manufacturer: nonEmptyStringExpect,
+      model: nonEmptyStringExpect,
+      serial: nonEmptyStringExpect,
+      sku: nonEmptyStringExpect,
     });
   });
 });
