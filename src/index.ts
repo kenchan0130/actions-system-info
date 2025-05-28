@@ -10,16 +10,16 @@ export async function main(): Promise<void> {
   core.debug(`System Info: ${JSON.stringify(systemInfo, null, 2)}`);
 
   core.setOutput("cpu-core", systemInfo.cpu.core);
-  core.setOutput("cpu-model", systemInfo.cpu.model);
-  core.setOutput("hostname", systemInfo.hostname);
-  core.setOutput("platform", systemInfo.platform);
-  core.setOutput("kernel-release", systemInfo.kernel.release);
-  core.setOutput("kernel-version", systemInfo.kernel.version);
-  core.setOutput("manufacturer", systemInfo.manufacturer);
-  core.setOutput("model", systemInfo.model);
-  core.setOutput("name", systemInfo.name);
-  core.setOutput("release", systemInfo.release);
-  core.setOutput("serial", systemInfo.serial);
+  core.setOutput("cpu-model", systemInfo.cpu.model.trim());
+  core.setOutput("hostname", systemInfo.hostname.trim());
+  core.setOutput("platform", systemInfo.platform.trim());
+  core.setOutput("kernel-release", systemInfo.kernel.release.trim());
+  core.setOutput("kernel-version", systemInfo.kernel.version.trim());
+  core.setOutput("manufacturer", systemInfo.manufacturer.trim());
+  core.setOutput("model", systemInfo.model.trim());
+  core.setOutput("name", systemInfo.name.trim());
+  core.setOutput("release", systemInfo.release.trim());
+  core.setOutput("serial", systemInfo.serial.trim());
   core.setOutput("totalmem", systemInfo.totalmem);
 }
 
