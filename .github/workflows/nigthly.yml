@@ -24,7 +24,6 @@ jobs:
             "Hostname: ${{ steps.system-info.outputs.hostname }}"
             "Kernel release: ${{ steps.system-info.outputs.kernel-release }}"
             "Kernel version: ${{ steps.system-info.outputs.kernel-version }}"
-            "Model: ${{ steps.system-info.outputs.model }}"
             "Name: ${{ steps.system-info.outputs.name }}"
             "Platform: ${{ steps.system-info.outputs.platform }}"
             "Release: ${{ steps.system-info.outputs.release }}"
