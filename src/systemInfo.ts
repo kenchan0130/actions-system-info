@@ -1,8 +1,8 @@
 import os from "node:os";
+import * as si from "systeminformation";
 import macosRelease from "macos-release";
 import getWinVersion from "win-version";
 import windowsRelase from "windows-release";
-import * as si from 'systeminformation';
 
 import { getosAsync } from "./getosAsync";
 
