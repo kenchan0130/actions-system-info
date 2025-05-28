@@ -45,6 +45,7 @@
     "@actions/core": "*",
     "getos": "*",
     "macos-release": "*",
+    "systeminformation": "5.27.1",
     "win-version": "*",
     "windows-release": "*"
   }
