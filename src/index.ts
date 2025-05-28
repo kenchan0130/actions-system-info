@@ -12,17 +12,17 @@ export async function main(): Promise<void> {
   const outputs = {
     "cpu-core": systemInfo.cpu.core,
     "cpu-model": systemInfo.cpu.model,
-    "hostname": systemInfo.hostname,
-    "platform": systemInfo.platform,
+    hostname: systemInfo.hostname,
+    platform: systemInfo.platform,
     "kernel-release": systemInfo.kernel.release,
     "kernel-version": systemInfo.kernel.version,
-    "name": systemInfo.name,
-    "release": systemInfo.release,
-    "totalmem": systemInfo.totalmem,
+    name: systemInfo.name,
+    release: systemInfo.release,
+    totalmem: systemInfo.totalmem,
   };
-  Object.entries(outputs).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(outputs)) {
     core.setOutput(key, typeof value === "string" ? value.trim() : value);
-  });
+  }
 }
 
 main().catch((e: Error) => core.setFailed(e.message));
