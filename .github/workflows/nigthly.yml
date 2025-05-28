@@ -11,6 +11,9 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: ./
         id: system-info
       - name: Check outputs
@@ -47,7 +50,10 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: kenchan0130/actions-system-info@master
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: ./
         id: system-info
       - name: Check outputs
         run: |
