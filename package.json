@@ -8,7 +8,7 @@
     "build": "tsc",
     "clean": "rimraf dist/",
     "lint": "biome ci src",
-    "lint:fix": "biome check --apply src",
+    "lint:fix": "biome check --write src",
     "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -m -s",
     "test": "vitest"
   },
