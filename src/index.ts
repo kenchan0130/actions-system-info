@@ -20,7 +20,6 @@ export async function main(): Promise<void> {
   core.setOutput("name", systemInfo.name);
   core.setOutput("release", systemInfo.release);
   core.setOutput("serial", systemInfo.serial);
-  core.setOutput("sku", systemInfo.sku);
   core.setOutput("totalmem", systemInfo.totalmem);
 }
 

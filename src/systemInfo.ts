@@ -1,6 +1,6 @@
 import os from "node:os";
-import * as si from "systeminformation";
 import macosRelease from "macos-release";
+import * as si from "systeminformation";
 import getWinVersion from "win-version";
 import windowsRelase from "windows-release";
 
@@ -23,7 +23,6 @@ export type SystemInfo = {
   manufacturer: string;
   model: string;
   serial: string;
-  sku: string;
 };
 
 export const getSystemInfo = async (): Promise<SystemInfo> => {
@@ -65,6 +64,5 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
     manufacturer: system.manufacturer,
     model: system.model,
     serial: system.serial,
-    sku: system.sku,
   });
 };

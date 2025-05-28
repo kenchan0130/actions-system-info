@@ -30,7 +30,6 @@ jobs:
             "Platform: ${{ steps.system-info.outputs.platform }}"
             "Release: ${{ steps.system-info.outputs.release }}"
             "Serial: ${{ steps.system-info.outputs.serial }}"
-            "Stock Keeping Unit: ${{ steps.system-info.outputs.sku }}"
             "Total memory bytes: ${{ steps.system-info.outputs.totalmem }}"
           )
 
@@ -69,7 +68,6 @@ jobs:
             "Platform: ${{ steps.system-info.outputs.platform }}",
             "Release: ${{ steps.system-info.outputs.release }}",
             "Serial: ${{ steps.system-info.outputs.serial }}"
-            "Stock Keeping Unit: ${{ steps.system-info.outputs.sku }}"
             "Total memory bytes: ${{ steps.system-info.outputs.totalmem }}"
           )
 

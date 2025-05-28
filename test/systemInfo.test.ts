@@ -24,7 +24,6 @@ describe("getSystemInfo", () => {
       manufacturer: nonEmptyStringExpect,
       model: nonEmptyStringExpect,
       serial: nonEmptyStringExpect,
-      sku: nonEmptyStringExpect,
     });
   });
 });
