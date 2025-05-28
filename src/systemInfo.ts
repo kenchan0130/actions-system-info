@@ -6,24 +6,32 @@ import windowsRelase from "windows-release";
 
 import { getosAsync } from "./getosAsync";
 
-export type SystemInfo = {
-  hostname: string;
-  cpu: {
+export type SystemInfo = Readonly<{
+  baseboard: Readonly<{
+    manufacturer: string;
+    model: string;
+    version: string;
+    serial: string;
+  }>;
+  bios: Readonly<{
+    vendor: string;
+    version: string;
+  }>;
+  cpu: Readonly<{
     core: number;
     model: string;
-  };
-  totalmem: number; // Bytes
-  kernel: {
+  }>;
+  hostname: string;
+  kernel: Readonly<{
     release: string;
     version: string;
-  };
+  }>;
+  manufacturer: string;
   name: string;
   platform: string;
   release: string;
-  manufacturer: string;
-  model: string;
-  serial: string;
-};
+  totalmem: number; // Bytes
+}>;
 
 export const getSystemInfo = async (): Promise<SystemInfo> => {
   const cpus = os.cpus();
@@ -46,23 +54,33 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
   })();
 
   const system = await si.system();
+  const bios = await si.bios();
+  const baseboard = await si.baseboard();
 
   return Promise.resolve({
-    hostname: os.hostname(),
+    baseboard: {
+      manufacturer: baseboard.manufacturer,
+      model: baseboard.model,
+      version: baseboard.version,
+      serial: baseboard.serial,
+    },
+    bios: {
+      vendor: bios.vendor,
+      version: bios.version,
+    },
     cpu: {
       core: cpus.length,
       model: cpus[0].model,
     },
+    hostname: os.hostname(),
     kernel: {
       release: os.release(),
       version: os.version(),
     },
-    totalmem: os.totalmem(),
-    platform: os.platform(),
-    name,
-    release,
     manufacturer: system.manufacturer,
-    model: system.model,
-    serial: system.serial,
+    name,
+    platform: os.platform(),
+    release,
+    totalmem: os.totalmem(),
   });
 };

@@ -9,18 +9,27 @@ export async function main(): Promise<void> {
 
   core.debug(`System Info: ${JSON.stringify(systemInfo, null, 2)}`);
 
-  core.setOutput("cpu-core", systemInfo.cpu.core);
-  core.setOutput("cpu-model", systemInfo.cpu.model.trim());
-  core.setOutput("hostname", systemInfo.hostname.trim());
-  core.setOutput("platform", systemInfo.platform.trim());
-  core.setOutput("kernel-release", systemInfo.kernel.release.trim());
-  core.setOutput("kernel-version", systemInfo.kernel.version.trim());
-  core.setOutput("manufacturer", systemInfo.manufacturer.trim());
-  core.setOutput("model", systemInfo.model.trim());
-  core.setOutput("name", systemInfo.name.trim());
-  core.setOutput("release", systemInfo.release.trim());
-  core.setOutput("serial", systemInfo.serial.trim());
-  core.setOutput("totalmem", systemInfo.totalmem);
+  const outputs = {
+    "baseboard-manufacturer": systemInfo.baseboard.manufacturer,
+    "baseboard-model": systemInfo.baseboard.model,
+    "baseboard-version": systemInfo.baseboard.version,
+    "baseboard-serial": systemInfo.baseboard.serial,
+    "bios-version": systemInfo.bios.version,
+    "bios-vendor": systemInfo.bios.vendor,
+    "cpu-core": systemInfo.cpu.core,
+    "cpu-model": systemInfo.cpu.model,
+    "hostname": systemInfo.hostname,
+    "platform": systemInfo.platform,
+    "kernel-release": systemInfo.kernel.release,
+    "kernel-version": systemInfo.kernel.version,
+    "manufacturer": systemInfo.manufacturer,
+    "name": systemInfo.name,
+    "release": systemInfo.release,
+    "totalmem": systemInfo.totalmem,
+  };
+  Object.entries(outputs).forEach(([key, value]) => {
+    core.setOutput(key, typeof value === "string" ? value.trim() : value);
+  });
 }
 
 main().catch((e: Error) => core.setFailed(e.message));

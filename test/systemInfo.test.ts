@@ -22,8 +22,6 @@ describe("getSystemInfo", () => {
       name: nonEmptyStringExpect,
       release: nonEmptyStringExpect,
       manufacturer: nonEmptyStringExpect,
-      model: nonEmptyStringExpect,
-      serial: nonEmptyStringExpect,
     });
   });
 });
