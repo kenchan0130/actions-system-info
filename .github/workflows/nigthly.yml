@@ -36,7 +36,7 @@ jobs:
           IS_EMPTY_OUTOUT=false
           for OUTPUT in "${OUTPUTS[@]}";do
             echo "${OUTPUT}"
-            OUT=$(echo ${OUTPUT} | cut -d ':' -f2- | xargs)
+            OUT=$(echo "${OUTPUT}" | cut -d ':' -f2- | xargs)
             if [[ -z "${OUT}" ]];then
               IS_EMPTY_OUTOUT=true
             fi
