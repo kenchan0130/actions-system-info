@@ -5,17 +5,17 @@ jobs:
   node-version:
     timeout-minutes: 5
     permissions:
-      contents: write
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.node-version.outputs.result }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
       # This is a container action, so only linux can be used
       - id: node-version
-        uses: mikefarah/yq@v4
+        uses: mikefarah/yq@f03c9dc599c37bfcaf533427211d05e51e6fee64 # v4.47.1
         with:
           cmd: yq '.runs.using | sub("^node", "")' action.yml
 
@@ -24,34 +24,50 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: aquaproj/aqua-installer@d1fe50798dbadd4eb5b98957290ca175f6b4870f # v4.0.2
+        with:
+          aqua_version: v2.53.9
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ needs.node-version.outputs.result }}
           cache: npm
       - name: Install Node.js dependencies
         run: |
           npm ci
-      - name: Run lint
+      - name: Run node lint
+        id: node-lint
+        continue-on-error: false
         run: |
           npm run lint
+      - name: Run ghalint for action.yml
+        id: ghalint
+        continue-on-error: false
+        run: ghalint act
+      - name: Error handling
+        if: ${{ steps.node-lint.outcome == 'failure' || steps.ghalint.outcome == 'failure' }}
+        run: |
+          echo "Linting errors found"
+          exit 1
 
   test:
+    timeout-minutes: 10
     needs: node-version
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ needs.node-version.outputs.result }}
           cache: npm
