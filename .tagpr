@@ -2,5 +2,6 @@
   vPrefix = true
   releaseBranch = master
   versionFile = package.json
+  postVersionCommand = "npm install"
   changelog = false
   release = true
