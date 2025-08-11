@@ -23,5 +23,5 @@ outputs:
     description: "the total amount of system memory in bytes"
 
 runs:
-  using: "node20"
+  using: "node24"
   main: "lib/index.js"
