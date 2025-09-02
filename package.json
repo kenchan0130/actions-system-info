@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/kenchan0130/actions-system-info#readme",
   "devDependencies": {
-    "@biomejs/biome": "2.1.4",
+    "@biomejs/biome": "2.2.2",
     "@types/getos": "*",
     "@types/node": "*",
     "@vercel/ncc": "*",
