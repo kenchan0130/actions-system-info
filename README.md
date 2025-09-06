@@ -1,7 +1,7 @@
 # GitHub Actions runner OS system information
 
 [![Release](https://img.shields.io/github/v/release/kenchan0130/actions-system-info)](https://github.com/kenchan0130/actions-system-info/releases)
-[![Nigthly](https://github.com/kenchan0130/actions-system-info/workflows/Nigthly/badge.svg)](https://github.com/kenchan0130/actions-system-info/actions?query=workflow%3ANigthly)
+[![Nightly](https://github.com/kenchan0130/actions-system-info/workflows/Nightly/badge.svg)](https://github.com/kenchan0130/actions-system-info/actions?query=workflow%3ANightly)
 
 This action provides GitHub Actions runner OS information.
 
@@ -19,7 +19,7 @@ Name|Description
 `release`|The operating system (distribution) release
 `totalmem`|the total amount of system memory in bytes
 
-If you want to see the specific output contents for each OS, you can check them at [here](https://github.com/kenchan0130/actions-system-info/actions/workflows/nigthly.yml).
+If you want to see the specific output contents for each OS, you can check them at [here](https://github.com/kenchan0130/actions-system-info/actions/workflows/nightly.yml).
 
 ## Example usage
 
