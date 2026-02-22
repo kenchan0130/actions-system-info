@@ -35,7 +35,7 @@ export const getSystemInfo = async (): Promise<SystemInfo> => {
     }
 
     if (getosResult.os === "win32") {
-      return [windowsRelase() ?? "Unknown", `${getWinVersion().version}`];
+      return [windowsRelase(os.release()) ?? "Unknown", `${getWinVersion().version}`];
     }
 
     throw new Error(`${getosResult.os} is not supported.`);
