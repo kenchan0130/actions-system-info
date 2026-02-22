@@ -45,6 +45,6 @@
     "getos": "*",
     "macos-release": "*",
     "win-version": "*",
-    "windows-release": "*"
+    "windows-release": "7.0.0"
   }
 }
