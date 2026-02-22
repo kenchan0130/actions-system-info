@@ -6,10 +6,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf dist/",
     "lint": "biome ci src",
     "lint:fix": "biome check --write src",
-    "package": "npm run clean && npm run build && ncc build -o lib/ --license LICENSE -m -s",
+    "package": "rimraf lib/ && node scripts/package.mjs",
     "test": "vitest"
   },
   "repository": {
@@ -35,7 +34,8 @@
     "@biomejs/biome": "2.4.4",
     "@types/getos": "*",
     "@types/node": "*",
-    "@vercel/ncc": "*",
+    "esbuild": "0.27.3",
+    "esbuild-plugin-license": "1.2.3",
     "rimraf": "*",
     "typescript": "*",
     "vitest": "*"
