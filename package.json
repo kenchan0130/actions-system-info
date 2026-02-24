@@ -45,6 +45,6 @@
     "getos": "*",
     "macos-release": "*",
     "win-version": "*",
-    "windows-release": "6.1.0"
+    "windows-release": "git+https://github.com/sindresorhus/windows-release.git#c541c8b0dbe32a94577985f05de341b44215bb62"
   }
 }
