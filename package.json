@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/kenchan0130/actions-system-info#readme",
   "devDependencies": {
-    "@biomejs/biome": "2.4.10",
+    "@biomejs/biome": "2.4.14",
     "@types/getos": "*",
     "@types/node": "*",
     "esbuild": "0.27.4",
