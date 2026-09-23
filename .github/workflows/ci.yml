@@ -80,6 +80,9 @@ jobs:
       - name: Run package
         run: |
           npm run package
+      - name: Verify release package is committed
+        if: startsWith(github.head_ref, 'tagpr-from-') && matrix.os == 'ubuntu-latest'
+        run: git diff --exit-code -- lib/
       - name: Run action
         uses: ./
         id: system-info
